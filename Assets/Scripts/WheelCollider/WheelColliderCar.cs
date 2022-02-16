@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class Car : MonoBehaviour
+public class WheelColliderCar : MonoBehaviour
 {
     [SerializeField] private float engineForce = 100.0f;
     [SerializeField] private float brakeForce = 100.0f;
@@ -84,13 +84,18 @@ public class Car : MonoBehaviour
         wheelColliders.SetMotorTorque(motorTorque);
         wheelColliders.SetBrakeTorque(brakeTorque);
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            wheelColliders.SetHandBrakeTorque(brakeForce);
+        }
+
         float horizontalInput = Input.GetAxis("Horizontal");
         wheelColliders.SetSteerAngle(horizontalInput * maxSteerAngle);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Vector3 pos = transform.position;
             pos += Vector3.up * 1.0f;

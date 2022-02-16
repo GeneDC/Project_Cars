@@ -46,6 +46,12 @@ public class WheelColliderCollection : MonoBehaviour
         rearRightWheelCollider.brakeTorque = torque;
     }
 
+    public void SetHandBrakeTorque(float torque)
+    {
+        rearLeftWheelCollider.brakeTorque = torque;
+        rearRightWheelCollider.brakeTorque = torque;
+    }
+
     public void SetSteerAngle(float angle)
     {
         frontLeftWheelCollider.steerAngle = angle;
